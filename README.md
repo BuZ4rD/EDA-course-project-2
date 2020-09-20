@@ -1,1 +1,2 @@
-# EDA-course-project-2
+# EDA-Peer-graded-Assignment-Course-Project-1
+EDA Peer-graded Assignment: Course Project 1
