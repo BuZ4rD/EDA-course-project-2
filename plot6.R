@@ -7,7 +7,7 @@
 #   Plot6
 
 #   How have emissions from motor vehicle sources changed from 1999–2008
-#   in Baltimore City?
+#   in Baltimore City compared to Los Angeles
 ############################################################
 
 
@@ -44,7 +44,7 @@ subset_balt_la_motor_agg <- aggregate(Emissions ~ year + fips , subset_balt_la_m
 
 # Plot
 png('plot6.png')
-ggplot(subset_balt_la_motor_agg , aes(factor(year), Emissions)) +
+ggplot(subset_balt_la_motor_agg , aes(factor(year), Emissions, fill = "pink")) +
   facet_wrap(.~ fips) +
   geom_bar(stat='identity') +
   xlab("year")+
