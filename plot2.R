@@ -4,12 +4,11 @@
 #
 #   EDA-courseProject 2
 
-#   Plot1
+#   Plot2
 
-#   Have total emissions from PM2.5 decreased in the United States 
-#   from 1999 to 2008? Using the base plotting system,
-#   make a plot showing the total PM2.5 emission from all sources
-#   for each of the years 1999, 2002, 2005, and 2008.
+#   Have total emissions from PM2.5 decreased in the Baltimore City, Maryland
+#   (fips == "24510") from 1999 to 2008?
+#   Use the base plotting system to make a plot answering this question.
 ############################################################
 
 
@@ -30,14 +29,16 @@ s_scc <- readRDS("data/summarySCC_PM25.rds")
 head(s_scc)
 
 ###
+maryland_data <- s_scc[s_scc$fips=="24510",]
 
-subset_s_scc <- aggregate(Emissions ~ year, data = s_scc, sum)
+subset_s_scc <- aggregate(Emissions ~ year, data = maryland_data, sum)
 
 colfunc <- colorRampPalette(c("red", "orange"))
-png('plot1.png')
+png('plot2.png')
 barplot(subset_s_scc$Emissions, subset_s_scc$year,
         ylab = "Emissions of PM2.5 in Tons", 
-        main = "Total Emissions of PM2.5 from 1999 to 2008", 
+        main = "Total Emissions of PM2.5 from 1999 to 2008",
+        sub = "Baltimore City, Maryland",
         names.arg = subset_s_scc$year,
         col = colfunc(4))
 dev.off()
